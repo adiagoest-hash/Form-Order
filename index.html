@@ -8,7 +8,7 @@
     body { font-family: Arial, sans-serif; max-width: 500px; margin: 30px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
     .form-group { margin-bottom: 15px; }
     label { display: block; margin-bottom: 5px; font-weight: bold; }
-    input { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+    input, select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
     button { background-color: #0b57d0; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
     button:hover { background-color: #0842a0; }
     #status { margin-top: 15px; font-weight: bold; text-align: center; }
@@ -35,15 +35,14 @@
     </div>
 
     <div class="form-group">
-  <label for="plant">Plant:</label>
-  <select id="plant" required>
-    <option value="" disabled selected>-- Pilih Plant --</option>
-    <option value="Samarinda">Samarinda</option>
-    <option value="Palaran">Palaran</option>
-    <option value="Pendingin">Pendingin</option>
-    <option value="Sanga-sanga">Sanga-sanga</option>
-  </select>
-</div>
+      <label for="plant">Plant:</label>
+      <select id="plant" required>
+        <option value="" disabled selected>-- Pilih Plant --</option>
+        <option value="Plant A">Plant A</option>
+        <option value="Plant B">Plant B</option>
+        <option value="Plant C">Plant C</option>
+      </select>
+    </div>
 
     <div class="form-group">
       <label for="nomorSO">Nomor SO:</label>
@@ -56,8 +55,8 @@
     </div>
 
     <div class="form-group">
-      <label for="TanggalAlir">Tanggal Alir:</label>
-      <input type="text" id="nomorLO" required>
+      <label for="tanggalAlir">Tanggal Alir:</label>
+      <input type="date" id="tanggalAlir" required>
     </div>
     
     <button type="submit" id="submitBtn">Kirim Data</button>
@@ -66,8 +65,7 @@
   <p id="status"></p>
 
   <script>
-    // TEMPELKAN URL WEB APP ANDA DI SINI
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzi5TjaGHcFs1F0oLp2cYTRhnWNuxlBf-jAO8z9HN87z6OA4CA7nLYqql3hOKvmDguT/exec'; 
+    const scriptURL = 'URL_WEB_APP_ANDA'; 
 
     const form = document.getElementById('orderForm');
     const statusText = document.getElementById('status');
@@ -86,7 +84,8 @@
         rencanaKebutuhan: document.getElementById('rencanaKebutuhan').value,
         plant: document.getElementById('plant').value,
         nomorSO: document.getElementById('nomorSO').value,
-        nomorLO: document.getElementById('nomorLO').value
+        nomorLO: document.getElementById('nomorLO').value,
+        tanggalAlir: document.getElementById('tanggalAlir').value
       };
 
       fetch(scriptURL, {
